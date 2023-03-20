@@ -3,28 +3,32 @@ import axios from 'axios'
 import { useAuth } from '../Context/AuthProvider/useAuth'
 import { api } from '../services/api'
 import { useParams } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 
 export function MyTexts() {
 
-  const route = useParams()
-  const textId = route.params.id
+  const [data, setData] = useState([])
+  const [itensPerPage, setItensPerPage] = useState(6)
+  const [currentePage, setCurrentPage] = useState(0)
+
+  const pages = Math.ceil(data.length / itensPerPage)
+  const startIndex = currentePage * itensPerPage
+  const endIndex = startIndex + itensPerPage
+  const currentItens = data.slice(startIndex, endIndex)
 
 
   const auth = useAuth()
 
   const userID = auth.user?.id
-  console.log(auth)
 
   async function handleTextsAdm() {
 
     try {
       
       const request = await api.get(`/index/aluno/${userID}`, {headers: { Authorization: `Bearer ${auth.user.token}`}})
-      const response = request.data
-      console.log(response)
-
+      const response = request.data.data
+      setData(response)
     } catch (error) {
       return alert(error)
     }
@@ -34,7 +38,7 @@ export function MyTexts() {
   return (
       <div className="w-screen h-screen bg-gray-200">
         <Header />
-        <div className='w-full bg-blue-300 flex flex-col justify-center items-center'>
+        <div className='w-full flex flex-col justify-center items-center px-80'>
           <p className='font-bold text-3xl mt-6'>Minhas Redações:</p>
 
           <button 
@@ -42,6 +46,46 @@ export function MyTexts() {
           >
             Verificar
           </button>
+          <div className='mt-4'>
+
+            {Array.from(Array(pages), (item,index) => {
+              return (
+                <button 
+                  className='mr-2 bg-cyan-400 w-6 rounded-lg text-white'
+                  value={index}
+                  onClick={(e) => setCurrentPage(Number(e.target.value))}
+                >
+                  {index + 1}
+                </button>
+              )
+            })}
+          
+          </div>
+          <div className='w-full mt-2 bg-orange-400 rounded-lg p-4'>
+          <table className='flex flex-col justify-center'>
+            <td className='font-bold ml-24'>Número da Redação</td>
+            {
+              Array.from(currentItens).map((elemento, index) => {
+                return (
+                  <div className='text-black w-full'>
+                      <div className='flex justify-around mb-2 items-center'>
+                        <tr>{elemento.numero}</tr>
+                        <button 
+                          className='w-24 h-10 bg-blue-500 rounded-lg text-white'
+                        >
+                          Visualizar
+                        </button>
+                      </div>                 
+                    </div>
+                )
+              })    
+  
+            }
+
+          </table>
+          
+
+          </div>
 
         </div>
       </div>

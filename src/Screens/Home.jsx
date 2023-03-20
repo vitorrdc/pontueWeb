@@ -8,9 +8,9 @@ import { Header } from '../Components/Header'
 
 export function Home() {
   return (
-      <div className="w-screen h-screen bg-gray-200">
+      <div className="w-screen h-screen bg-red-300 justify-center items-center">
       <Header />
-      <div className='w-full flex justify-around bg-red-300 p-16'>
+      <div className='w-full flex justify-around items-center p-16'>
         <div>
           <img 
           src={Monitor} 
@@ -37,8 +37,7 @@ export function Home() {
           </div>  
          </div>
         </div>      
-      </div>  
-      <p className='text-xs text-center w-full mt-4'>Todos os direiros reservados à Pontue - Desenvolvido por Vitor Campos :)</p>      
+      </div>      
       </div>
   )
 }
