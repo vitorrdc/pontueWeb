@@ -4,9 +4,10 @@ import { MyTexts } from "../Screens/MyTexts";
 
 export function PrivateRoutes() {
   return (
-      <Routes>
-        <Route path="/home" exact element={<Home/>}/>
-        <Route path="/mytexts" exact element={<MyTexts/>}/>
+    <Routes initialRouteName='/home' >
+    <Route path="/home" exact element={<Home/>} />
+    <Route path="/mytexts" exact element={<MyTexts/>}/>
+    <Route path="/text/:id" exact element={<Text/>}/>
       </Routes>
   )
 }

@@ -16,3 +16,6 @@ export function getuserLocalStorage() {
   return user ?? null
 }
 
+export function removeUserLocalStorage() {
+  localStorage.removeItem('u')
+}

@@ -1,6 +1,7 @@
 import {useEffect, useState } from "react"
 import Logo from '../assets/logo-full-white.png'
 import { useAuth } from "../Context/AuthProvider/useAuth"
+import {useNavigate} from 'react-router-dom'
 
 export function LoginScreen() {
 
@@ -9,6 +10,7 @@ export function LoginScreen() {
 
 
   const auth = useAuth()
+  const navigate = useNavigate()
 
 
   async function login() {
@@ -23,7 +25,9 @@ export function LoginScreen() {
     }
 
      try {
-       await auth.LoginRequest(email,password)    
+       await auth.LoginRequest(email,password)
+       navigate('/home')   
+
     } catch (error) {
       return null
     }

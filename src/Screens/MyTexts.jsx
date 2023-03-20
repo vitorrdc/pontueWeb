@@ -1,21 +1,27 @@
-import Logo from '../assets/logo-full-white.png'
-import Monitor from '../assets/monitor.svg'
-import TempoReal from '../assets/tempo-real-02.svg'
-import Enviar from '../assets/enviar-02.svg'
 import { Header } from '../Components/Header'
 import axios from 'axios'
 import { useAuth } from '../Context/AuthProvider/useAuth'
+import { api } from '../services/api'
+import { useParams } from 'react-router-dom'
+import { useEffect } from 'react'
 
 
 export function MyTexts() {
 
+  const route = useParams()
+  const textId = route.params.id
+
+
   const auth = useAuth()
+
+  const userID = auth.user?.id
+  console.log(auth)
 
   async function handleTextsAdm() {
 
     try {
       
-      const request = await axios.get('https://desafio.pontue.com.br/index/admin', {headers: `Bearer Token${auth.token}`})
+      const request = await api.get(`/index/aluno/${userID}`, {headers: { Authorization: `Bearer ${auth.user.token}`}})
       const response = request.data
       console.log(response)
 

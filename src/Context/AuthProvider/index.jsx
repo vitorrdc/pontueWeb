@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
-import { getuserLocalStorage, setUserLocalStorage } from "./util";
+import { getuserLocalStorage, removeUserLocalStorage, setUserLocalStorage } from "./util";
 import axios from "axios";
+import { api } from "../../services/api";
 
 export const AuthContext = createContext({})
 
@@ -18,7 +19,7 @@ export const AuthProvider = ({children}) => {
   async function LoginRequest(email, password) {
     try {
       
-      const request = await axios.post('https://desafio.pontue.com.br/auth/login', {email, password})
+      const request = await api.post('/auth/login', {email, password})
 
       const payLoad = request.data
         setUser({
@@ -34,12 +35,13 @@ export const AuthProvider = ({children}) => {
   }
 
   function logout () {
-     setUser(null)
+     setUser({})
      setUserLocalStorage(null)
+     removeUserLocalStorage()
   }
 
   return (
-    <AuthContext.Provider value={{...user, LoginRequest, logout}}>
+    <AuthContext.Provider value={{user, LoginRequest, logout}}>
       {children}
     </AuthContext.Provider>
   )

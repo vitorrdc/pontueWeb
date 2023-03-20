@@ -9,19 +9,16 @@ export function IndexRoutes() {
 
   const auth = useAuth()
 
-  useEffect(() => {
-    console.log(auth)
-  }, [auth])
+  console.log({auth})
 
   return (
     <BrowserRouter>
-    { 
-      auth.token ? <PrivateRoutes /> : <PublicRoutes />
-    }
     
-      <PrivateRoutes />  <PublicRoutes/>
+     {
+      auth.user?.token ? <PrivateRoutes /> : <PublicRoutes />
+     }
+     
     
-    </BrowserRouter>
-      
+    </BrowserRouter>  
 )
   }

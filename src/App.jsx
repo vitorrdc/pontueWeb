@@ -5,16 +5,16 @@ import { ProtectedLayout } from './Components/ProtectedLayout'
 import { LoginScreen } from './Screens/Login'
 import { Home } from './Screens/Home'
 import { IndexRoutes } from './routes/index.routes'
+import { useAuth } from './Context/AuthProvider/useAuth'
 
 
 function App() {
+
 
   return (
     <AuthProvider>
       <IndexRoutes />
     </AuthProvider>
-
-
   )
 }
 
