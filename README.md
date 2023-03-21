@@ -13,6 +13,7 @@
 - [x] Consumo de API lado Admin
 - [x] Exibição de dados em tabela paginada
 - [x] Exibição dos arquivos extraídos do banco de dados
+- [x] Armazenamento de dados do usuário no LocalStorage
 
 ### 🛠 Tecnologias
 
