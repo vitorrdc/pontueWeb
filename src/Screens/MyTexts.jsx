@@ -19,16 +19,30 @@ export function MyTexts() {
   const userID = auth.user?.id
 
   async function handleTextsStudents() {
-    try {
-      const request = await api.get(`/index/aluno/${userID}`, {
-        headers: { Authorization: `Bearer ${auth.user.token}` },
-      })
-      const response = request.data.data
-      setData(response)
-    } catch (error) {
-      return alert(error)
+    if (auth.user.id === null) {
+      try {
+        const request = await api.get(`/index/admin`, {
+          headers: { Authorization: `Bearer ${auth.user.token}` },
+        })
+        const response = request.data.data
+        setData(response)
+      } catch (error) {
+        return alert(error)
+      }
+    } else {
+      try {
+        const request = await api.get(`/index/aluno/${userID}`, {
+          headers: { Authorization: `Bearer ${auth.user.token}` },
+        })
+        const response = request.data.data
+        setData(response)
+      } catch (error) {
+        return alert(error)
+      }
     }
   }
+
+  console.log(auth.user.id)
 
   async function handleTextById(elementoID) {
     try {
