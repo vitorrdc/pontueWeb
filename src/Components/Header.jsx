@@ -21,9 +21,7 @@ export function Header() {
               Minhas redações
             </button>
           </Link>
-          <button className="mr-4 bg-cyan-500 shadow-md shadow-cyan-900 text-white p-3 rounded-lg">
-            Editar redações
-          </button>
+
           <button
             className="mr-4 w-16 shadow-md shadow-orange-900 text-white bg-orange-500 rounded-lg h-8"
             onClick={handleLogout}

@@ -59,7 +59,7 @@ export function MyTexts() {
         </div>
 
         <div className="mt-4"></div>
-        <div className="w-full mt-2 bg-red-300 rounded-lg p-4">
+        <div className="w-full mt-2 bg-blue-300 rounded-lg p-4">
           <div className="flex flex-col justify-center">
             <div className="font-bold">Número da Redação</div>
             {Array.from(currentItens).map((elemento, index) => {
@@ -87,7 +87,7 @@ export function MyTexts() {
                 return (
                   <button
                     key={index}
-                    className="mr-2 bg-blue-900 w-6 rounded-lg text-white"
+                    className="mr-2 bg-pink-400 w-6 rounded-lg text-white"
                     value={index}
                     onClick={(e) => setCurrentPage(Number(e.target.value))}
                   >
