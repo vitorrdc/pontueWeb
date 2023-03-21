@@ -2,6 +2,7 @@ import { Header } from '../Components/Header'
 import axios from 'axios'
 import { useAuth } from '../Context/AuthProvider/useAuth'
 import { api } from '../services/api'
+import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
@@ -9,6 +10,7 @@ import { useEffect, useState } from 'react'
 export function MyTexts() {
 
   const [data, setData] = useState([])
+  const [textId, setTextId] = useState('')
   const [itensPerPage, setItensPerPage] = useState(6)
   const [currentePage, setCurrentPage] = useState(0)
 
@@ -22,7 +24,7 @@ export function MyTexts() {
 
   const userID = auth.user?.id
 
-  async function handleTextsAdm() {
+  async function handleTextsStudents() {
 
     try {
       
@@ -32,8 +34,25 @@ export function MyTexts() {
     } catch (error) {
       return alert(error)
     }
-
   }
+
+  async function handleTextById(elementoID) {
+
+
+    try {
+      
+      const request = await api.get(`/redacao/${elementoID}`, {headers: { Authorization: `Bearer ${auth.user.token}`}})
+      const responseId = request.data.data
+      setTextId(responseId)
+      window.open(responseId.urls[0].url)
+    } catch (error) {
+      return alert(error)
+    }
+  
+  }
+
+
+
 
   return (
       <div className="w-screen h-screen bg-gray-200">
@@ -42,15 +61,17 @@ export function MyTexts() {
           <p className='font-bold text-3xl mt-6'>Minhas Redações:</p>
 
           <button 
-            onClick={handleTextsAdm}
+            onClick={handleTextsStudents}
+            className='mt-2 bg-green-500 rounded-lg text-white p-2'
           >
-            Verificar
+            Atualizar lista:
           </button>
           <div className='mt-4'>
 
             {Array.from(Array(pages), (item,index) => {
               return (
                 <button 
+                  key={index}
                   className='mr-2 bg-cyan-400 w-6 rounded-lg text-white'
                   value={index}
                   onClick={(e) => setCurrentPage(Number(e.target.value))}
@@ -62,16 +83,17 @@ export function MyTexts() {
           
           </div>
           <div className='w-full mt-2 bg-orange-400 rounded-lg p-4'>
-          <table className='flex flex-col justify-center'>
-            <td className='font-bold ml-24'>Número da Redação</td>
+          <div className='flex flex-col justify-center'>
+            <div className='font-bold ml-24'>Número da Redação</div>
             {
               Array.from(currentItens).map((elemento, index) => {
                 return (
-                  <div className='text-black w-full'>
+                  <div key={index} className='text-black w-full'>
                       <div className='flex justify-around mb-2 items-center'>
-                        <tr>{elemento.numero}</tr>
-                        <button 
+                        <li>{elemento.numero}</li>
+                        <button  
                           className='w-24 h-10 bg-blue-500 rounded-lg text-white'
+                          onClick={() => handleTextById(elemento.id)}
                         >
                           Visualizar
                         </button>
@@ -82,10 +104,10 @@ export function MyTexts() {
   
             }
 
-          </table>
-          
-
+          </div>    
           </div>
+
+     
 
         </div>
       </div>

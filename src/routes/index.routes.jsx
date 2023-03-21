@@ -7,10 +7,10 @@ import { PublicRoutes } from './public.routes'
 
 export function IndexRoutes() {
 
+
   const auth = useAuth()
 
-  console.log({auth})
-
+  
   return (
     <BrowserRouter>
     
