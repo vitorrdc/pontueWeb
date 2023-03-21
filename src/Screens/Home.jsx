@@ -8,9 +8,9 @@ import { Header } from '../Components/Header'
 
 export function Home() {
   return (
-      <div className="w-screen h-screen bg-red-300 justify-center items-center">
+      <div className="w-screen bg-red-300 justify-center items-center">
       <Header />
-      <div className='w-full flex justify-around items-center p-16'>
+      <div className='w-full h-screen flex justify-around items-center p-16'>
         <div>
           <img 
           src={Monitor} 
@@ -20,8 +20,8 @@ export function Home() {
         <div className='flex flex-col items-center justify-center'>
          <p className='text-white font-bold text-4xl mb-6'>Bem vindo(a) ao Pontue!</p>
          <p className='text-white font-semibold text-lg mb-10'>Aqui você pode:</p>
-         <div className='flex justify-around items-center '>
-          <div className='flex flex-col justify-around items-center mr-24'>
+         <div className='flex justify-around items-center'>
+          <div className='flex flex-col justify-around items-center'>
             <img 
             src={TempoReal} 
             className='w-36'

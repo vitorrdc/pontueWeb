@@ -84,12 +84,12 @@ export function MyTexts() {
           </div>
           <div className='w-full mt-2 bg-orange-400 rounded-lg p-4'>
           <div className='flex flex-col justify-center'>
-            <div className='font-bold ml-24'>Número da Redação</div>
+            <div className='font-bold'>Número da Redação</div>
             {
               Array.from(currentItens).map((elemento, index) => {
                 return (
                   <div key={index} className='text-black w-full'>
-                      <div className='flex justify-around mb-2 items-center'>
+                      <div className='flex justify-between mb-2 items-center px-10'>
                         <li>{elemento.numero}</li>
                         <button  
                           className='w-24 h-10 bg-blue-500 rounded-lg text-white'
@@ -105,10 +105,8 @@ export function MyTexts() {
             }
 
           </div>    
+          <div className='font-bold text-center'>Página {currentePage + 1}</div>
           </div>
-
-     
-
         </div>
       </div>
       
