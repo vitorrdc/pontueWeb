@@ -47,29 +47,19 @@ export function MyTexts() {
     <div className="w-screen h-screen bg-gray-200">
       <Header />
       <div className="w-full flex flex-col justify-center items-center px-80">
-        <p className="font-bold text-3xl mt-6">Minhas Redações:</p>
+        <div className="flex justify-center items-center mt-4">
+          <p className="font-bold text-3xl">Minhas Redações:</p>
 
-        <button
-          onClick={handleTextsStudents}
-          className="mt-2 bg-green-500 rounded-lg text-white p-2"
-        >
-          Atualizar lista:
-        </button>
-        <div className="mt-4">
-          {Array.from(Array(pages), (item, index) => {
-            return (
-              <button
-                key={index}
-                className="mr-2 bg-cyan-400 w-6 rounded-lg text-white"
-                value={index}
-                onClick={(e) => setCurrentPage(Number(e.target.value))}
-              >
-                {index + 1}
-              </button>
-            )
-          })}
+          <button
+            onClick={handleTextsStudents}
+            className="mt-2 bg-green-500 rounded-lg text-white px-2 py-1 ml-2"
+          >
+            Atualizar
+          </button>
         </div>
-        <div className="w-full mt-2 bg-orange-400 rounded-lg p-4">
+
+        <div className="mt-4"></div>
+        <div className="w-full mt-2 bg-red-300 rounded-lg p-4">
           <div className="flex flex-col justify-center">
             <div className="font-bold">Número da Redação</div>
             {Array.from(currentItens).map((elemento, index) => {
@@ -88,7 +78,25 @@ export function MyTexts() {
               )
             })}
           </div>
-          <div className="font-bold text-center">Página {currentePage + 1}</div>
+          <div className="flex justify-center mt-2">
+            <div className="font-bold text-center mr-4">
+              Página {currentePage + 1}
+            </div>
+            <div>
+              {Array.from(Array(pages), (item, index) => {
+                return (
+                  <button
+                    key={index}
+                    className="mr-2 bg-blue-900 w-6 rounded-lg text-white"
+                    value={index}
+                    onClick={(e) => setCurrentPage(Number(e.target.value))}
+                  >
+                    {index + 1}
+                  </button>
+                )
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </div>
