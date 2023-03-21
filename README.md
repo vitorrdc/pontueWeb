@@ -1,7 +1,7 @@
-# Shot Game!
+# Pontue!
 
 <h1 align="center">
-  <img alt="Pontue!" title="Pontue" src="pontuetest/src/assets/bannerPontue.png" />
+  <img alt="Pontue!" title="Pontue" src="./src/assets/bannerPontue.png" />
 </h1>
 
 > Projeto desenvolvido para teste à vaga de Desenvolvedor Front end na Pontue!
