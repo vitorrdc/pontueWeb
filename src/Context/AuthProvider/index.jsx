@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
     const user = getuserLocalStorage()
 
     if (user) {
-      setUser(user.email)
+      setUser(user.token)
     }
   }, [])
 
@@ -31,7 +31,7 @@ export const AuthProvider = ({ children }) => {
       setUserLocalStorage(payLoad)
       return request.data
     } catch (error) {
-      return null
+      return alert('E-mail e/ou senha inválidos')
     }
   }
 

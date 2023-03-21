@@ -42,8 +42,6 @@ export function MyTexts() {
     }
   }
 
-  console.log(auth.user.id)
-
   async function handleTextById(elementoID) {
     try {
       const request = await api.get(`/redacao/${elementoID}`, {
