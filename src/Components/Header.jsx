@@ -21,6 +21,11 @@ export function Header() {
               Minhas redações
             </button>
           </Link>
+          <Link to="/submitTexts">
+            <button className="mr-4 bg-emerald-700 shadow-md shadow-emerald-900 text-white p-3  rounded-lg">
+              Enviar redação
+            </button>
+          </Link>
 
           <button
             className="mr-4 w-16 shadow-md shadow-orange-900 text-white bg-orange-500 rounded-lg h-8"
