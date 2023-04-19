@@ -4,7 +4,7 @@
   <img alt="Pontue!" title="Pontue" src="./src/assets/bannerPontue.png" />
 </h1>
 
-> Projeto desenvolvido para teste à vaga de Desenvolvedor Front end na Pontue!
+> Projeto desenvolvido à título de estudo para plataforma Pontue!
 
 ## 🚀 Tarefas:
 
